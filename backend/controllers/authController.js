@@ -28,7 +28,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const token = generateToken({ id: profileData.id, isAdmin: profileData.isAdmin });
 
   res
-    .cookie("token", token, { httpOnly: true, secure: false, sameSite: "strict" })
+    .cookie("token", token, { httpOnly: true, secure: true, sameSite: "none" })
     .status(201)
     .json(new ApiResponse(201, { user: profileData }, "User registered"));
 });
@@ -79,14 +79,14 @@ const loginUser = asyncHandler(async (req, res) => {
     .cookie("token", token, {
       httpOnly: true,
       secure: true,
-      sameSite: "lax",
+      sameSite: "none",
     })
     .json(new ApiResponse(200, { user: profile }, "Login successful"));
 });
 
 // LOGOUT USER
 const logoutUser = asyncHandler(async (req, res) => {
-  res.clearCookie("token", { httpOnly: true, sameSite: "strict", secure: false })
+  res.clearCookie("token", { httpOnly: true, sameSite: "none", secure: true })
      .json(new ApiResponse(200, {}, "Logged out successfully"));
 });
 
