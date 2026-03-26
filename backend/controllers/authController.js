@@ -78,7 +78,7 @@ const loginUser = asyncHandler(async (req, res) => {
   res
     .cookie("token", token, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       sameSite: "lax",
     })
     .json(new ApiResponse(200, { user: profile }, "Login successful"));
