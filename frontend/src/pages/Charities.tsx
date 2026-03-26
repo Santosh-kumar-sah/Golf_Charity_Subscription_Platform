@@ -146,7 +146,7 @@ const Charities: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [selectedCharity, setSelectedCharity] = useState<Charity | null>(null);
   const [showModal, setShowModal] = useState(false);
-  const [contributing, setContributing] = useState(false);
+  // const [contributing, setContributing] = useState(false);
 
   // ✅ FETCH DATA (this was missing → caused crash)
   useEffect(() => {
@@ -180,7 +180,7 @@ const Charities: React.FC = () => {
   // ✅ properly using charityId + contributing
   const handleContribute = async (charityId: string, amount: number) => {
     try {
-      setContributing(true);
+      // setContributing(true);
 
       console.log("Contributing:", charityId, amount);
 
@@ -194,9 +194,10 @@ const Charities: React.FC = () => {
 
     } catch (error: any) {
       throw new Error(error?.message || "Failed to process contribution");
-    } finally {
-      setContributing(false);
-    }
+    } 
+    // finally {
+    //   setContributing(false);
+    // }
   };
 
   // ✅ LOADING STATE
@@ -227,6 +228,7 @@ const Charities: React.FC = () => {
         isOpen={showModal}
         onClose={handleCloseModal}
         onContribute={handleContribute}
+        
       />
     </div>
   );
