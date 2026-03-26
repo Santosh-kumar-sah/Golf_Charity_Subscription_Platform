@@ -17,7 +17,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin:  "*", // frontend
+  origin:  process.env.FRONTEND_URL, // frontend
   credentials: true
 }));
 
