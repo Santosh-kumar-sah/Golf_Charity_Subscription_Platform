@@ -63,3 +63,5 @@ const UserCharityCard: React.FC<Props> = ({ charity, onContribute }) => {
 };
 
 export default UserCharityCard;
+
+

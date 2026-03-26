@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { type Charity, getCharities } from "../api/charityApi";
 import { type Draw, getPublicDraws } from "../api/drawApi";
-import UserCharityCard from "../components/charity/UserCharityCard";
+// import UserCharityCard from "../components/charity/UserCharityCard";
 import ContributionModal from "../components/charity/ContributionModal";
 
 const Home: React.FC = () => {
@@ -46,7 +46,7 @@ const Home: React.FC = () => {
     setShowModal(true);
   };
 
-  const handleContribute = async (charityId: string, amount: number) => {
+  const handleContribute = async (_charityId: string, amount: number) => {
     if (!user) {
       navigate("/login");
       return;
@@ -172,6 +172,16 @@ const Home: React.FC = () => {
           </Link>
         </div>
       </section>
+
+      <ContributionModal
+  charity={selectedCharity}
+  isOpen={showModal}
+  onClose={() => {
+    setShowModal(false);
+    setSelectedCharity(null);
+  }}
+  onContribute={handleContribute}
+/>
     </div>
   );
 };
