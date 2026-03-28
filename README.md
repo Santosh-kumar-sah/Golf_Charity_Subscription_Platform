@@ -2,6 +2,7 @@
 
 **Live Website:** https://golf-charity-subscription-platform-henna.vercel.app/
 
+
  
 
 ---
@@ -77,6 +78,8 @@ Users can:
 - Mobile app version extension.
 - Campaign modules for promotions and seasonal events.
 
+
+Pull Requests are allowed
 
 
 
