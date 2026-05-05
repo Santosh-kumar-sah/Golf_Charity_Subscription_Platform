@@ -8,11 +8,19 @@ type GlassCardProps = {
   children?: React.ReactNode
 }
 
+const MotionCard = motion.div as React.ComponentType<React.HTMLAttributes<HTMLDivElement> & {
+  initial?: unknown
+  whileInView?: unknown
+  viewport?: unknown
+  whileHover?: unknown
+  transition?: unknown
+}>
+
 const GlassCard: React.FC<GlassCardProps> = ({ title, subtitle, children }) => {
   const reduceMotion = usePrefersReducedMotion()
 
   return (
-    <motion.div
+    <MotionCard
       className="relative overflow-hidden rounded-2xl bg-white/8 backdrop-blur-lg border border-white/10 p-6"
       initial={reduceMotion ? undefined : { opacity: 0, y: 24 }}
       whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
@@ -32,7 +40,7 @@ const GlassCard: React.FC<GlassCardProps> = ({ title, subtitle, children }) => {
         {subtitle && <p className="text-white/80 text-sm mt-1">{subtitle}</p>}
         <div className="mt-4 text-white/90 text-sm">{children}</div>
       </div>
-    </motion.div>
+    </MotionCard>
   )
 }
 
