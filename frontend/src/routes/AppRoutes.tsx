@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import Home from "../pages/Home";
+import LandingPage from "../components/LandingPage";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Dashboard from "../pages/Dashboard";
@@ -24,7 +25,8 @@ const AppRoutes: React.FC = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/home" element={<Home />} />
       <Route
         path="/login"
         element={!user ? <Login /> : <Navigate to="/dashboard" />}
